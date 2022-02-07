@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FLAMES</title>
+	<h1><span style="color:yellow">F </span><span style="color:pink">L </span><span style="color:green">A </span><span style="color:red">M </span><span style="color:black">E </span><span style="color:violet">S </span></h1>
+</head>
+<script>
+	function flames(){
+		const l= ["F","L","A","M","E","S"];
+		var n=document.getElementById("first").value;
+		var m=document.getElementById("second").value;
+
+		let p=n.length;
+		let q=m.length;
+
+		var g=0;
+
+		const one=[];
+		const two=[];
+
+		var d=q;
+
+		for(let i=0;i<p;i++){one[i]=n[i];}
+		for(let i=0;i<q;i++){two[i]=m[i];}
+
+		for(let i=0;i<p;i++){
+			for(let j=0;j<d;j++){
+				if(one[i]==two[j]){
+					g=g+2;
+					two.splice(j,1);
+					console.log(two);
+					d=d-1;
+					break;
+				}
+			}
+		}
+
+
+		var z=(p+q)-g;
+		console.log(z);
+
+		var v=0;
+		while(l.length>1){
+			if(z>l.length){
+				var w=0;
+				if(v!=0){
+					for(let i=v;i<l.length;i++){w++;}
+				}
+				
+				var k=z-1;
+				k=k-w;
+	    		v=k%l.length;
+	    		l.splice(v,1);
+	    		console.log(l);
+			}
+			else{
+				var w=0;
+				
+				var k=z-1;
+				if(v==l.length){
+					v=0;
+				}
+				v=v+k%l.length;
+				console.log(v);
+				l.splice(v,1);
+				console.log(l);
+			}
+		}
+
+		if(l[0]=='F'){
+			document.getElementById("out").innerHTML="Friends";
+		}
+		else if(l[0]=='L'){
+			document.getElementById("out").innerHTML="Lovers";
+		}
+		else if(l[0]=='A'){
+			document.getElementById("out").innerHTML="Angry with each other";
+		}
+		else if(l[0]=='M'){
+			document.getElementById("out").innerHTML="Ends in Marriage";
+		}
+		else if(l[0]=='E'){
+			document.getElementById("out").innerHTML="Enemies";
+		}
+		else{
+			document.getElementById("out").innerHTML="Sister or Brother";
+		}
+
+	}
+</script>
+<body>
+	<input type="text" id="first" placeholder="Enter your Name">
+	<br><br>
+	<input type="text" id="second" placeholder="Enter your Crush name">
+	<br><br>
+	<input type="submit" id="submit" onclick="flames();">
+	<br><br>
+	<h3 id="out"></h3>
+</body>
+</html>
